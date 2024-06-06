@@ -1,6 +1,8 @@
+#!/bin/bash
+
 #DATA_FILE=mst.jsonl
 REPEAT=1
-SETS=3
+SETS=1
 WARMUPS=1
 ITERATIONS=3
 

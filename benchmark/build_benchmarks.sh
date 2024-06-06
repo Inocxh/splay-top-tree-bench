@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Splay top trees
 mkdir -p ../splay-top-trees/build
 cd ../splay-top-trees/build
