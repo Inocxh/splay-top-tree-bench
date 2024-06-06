@@ -38,7 +38,7 @@ then
             echo "Set $i" 
             for _ in $(eval echo {1..$REPEAT})
             do
-                ./bin/stt-rs -i dataset/mst/random/mst_${n}_${i}.txt --json >> results/mst/stt-rs.jsonl || exit
+                ./bin/stt-rs -i dataset/mst/random/mst_${n}_${i}.txt --iterations $ITERATIONS --json >> results/mst/stt-rs.jsonl || exit
             done
         done
     done

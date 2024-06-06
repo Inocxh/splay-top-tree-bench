@@ -20,7 +20,7 @@ then
             echo "Set $i" 
             for _ in $(eval echo {1..$REPEAT})
             do
-                ./../build/benchmark_connectivity $WARMUPS $ITERATIONS dataset/connectivity/con_${n}_${i}.txt >> results/splay_top_tree/$DATA_FILE || exit
+                ./../build/benchmark_connectivity $WARMUPS $ITERATIONS dataset/con/con_${n}_${i}.txt >> results/splay_top_tree/$DATA_FILE || exit
             done
         done
     done
