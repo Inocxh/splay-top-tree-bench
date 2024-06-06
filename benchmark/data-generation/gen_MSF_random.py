@@ -9,6 +9,9 @@ def main():
     sets = int(sys.argv[2])
     sizes = [1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000]
     edge_weight = 1000
+
+    random.seed(1234)
+
     for n in sizes:
         m = 8 * n
         for set in range(sets):

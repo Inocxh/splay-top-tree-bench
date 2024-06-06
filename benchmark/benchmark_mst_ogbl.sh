@@ -12,5 +12,5 @@ echo "Running splay-top-trees..."
 mkdir -p results/mst-ogbl/
 rm -f results/mst-ogbl/stt-rs.jsonl
 echo "Running stt-rs..."
-./bin/stt-rs/bench_mst -i dataset/mst/ogbl/ogbl-collab.txt --json >> results/mst-ogbl/stt-rs.jsonl || exit
+./bin/stt-rs/bench_mst -i dataset/mst/ogbl/ogbl-collab.txt --json --iterations $ITERATIONS >> results/mst-ogbl/stt-rs.jsonl || exit
 
