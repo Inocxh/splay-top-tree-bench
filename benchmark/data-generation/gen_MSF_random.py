@@ -9,6 +9,9 @@ def main():
     sets = int(sys.argv[2])
     sizes = [1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000]
     edge_weight = 1000
+
+    random.seed(1234)
+
     for n in sizes:
         m = 8 * n
         for set in range(sets):
@@ -21,8 +24,7 @@ def main():
                 w = random.randrange(edge_weight)
                 queries.append(f"e {u} {v} {w}\n")
 
-            f = open(f"./dataset/{test_name}/{test_name}_{n}_{set}.txt", "w")
-            f.write(f"Randomly gemerated edge insertions\n")
+            f = open(f"../dataset/{test_name}/random/{test_name}_{n}_{set}.txt", "w")
             f.write(f"{test_name} {n} {m}\n")
             f.writelines(queries)
     

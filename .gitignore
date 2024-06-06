@@ -5,3 +5,4 @@ benchmark/plots/
 benchmark/results/
 benchmark/bin/
 stt-c/bin
+benchmark/data-generation/bin/
