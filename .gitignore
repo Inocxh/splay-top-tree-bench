@@ -1,3 +1,5 @@
 benchmark/dataset/
 benchmark/plots/
 benchmark/results/
+benchmark/bin/
+stt-c/bin
