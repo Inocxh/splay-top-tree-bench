@@ -3,17 +3,14 @@
 WARMUPS=1
 ITERATIONS=3
 
-if [ -f $INPUT_FILE ]
-then
-    mkdir -p results/mst-ogbl-collab/
-    rm -f results/mst-ogbl-collab/splay-top-tree.jsonl
-    ./bin/splay-top-trees/benchmark_mst $WARMUPS $ITERATIONS dataset/mst/ogbl-collab/incremental_mst.txt >> results/mst-ogbl-collab/splay-top-tree.jsonl || exit
 
-fi
-if [ -f $INPUT_FILE ]
-then
-    mkdir -p results/mst/
-    rm -f results/mst/stt-rs.jsonl
-   
-    ./bin/stt-rs -i dataset/mst/ogbl-collab/incremental_mst.txt --json >> results/mst-ogbl-collab/stt-rs.jsonl || exit
-fi
+mkdir -p results/mst-ogbl/
+rm -f results/mst-ogbl/splay-top-tree.jsonl
+echo "Running splay-top-trees..."
+./bin/splay-top-trees/benchmark_mst $WARMUPS $ITERATIONS dataset/mst/ogbl/ogbl-collab.txt >> results/mst-ogbl/splay-top-tree.jsonl || exit
+
+mkdir -p results/mst-ogbl/
+rm -f results/mst-ogbl/stt-rs.jsonl
+echo "Running stt-rs..."
+./bin/stt-rs/bench_mst -i dataset/mst/ogbl/ogbl-collab.txt --json >> results/mst-ogbl/stt-rs.jsonl || exit
+

@@ -21,8 +21,7 @@ def main():
                 w = random.randrange(edge_weight)
                 queries.append(f"e {u} {v} {w}\n")
 
-            f = open(f"./dataset/{test_name}/{test_name}_{n}_{set}.txt", "w")
-            f.write(f"Randomly gemerated edge insertions\n")
+            f = open(f"../dataset/{test_name}/random/{test_name}_{n}_{set}.txt", "w")
             f.write(f"{test_name} {n} {m}\n")
             f.writelines(queries)
     
