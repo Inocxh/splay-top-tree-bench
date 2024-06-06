@@ -1,0 +1,6 @@
+[submodule "splay-top-trees"]
+	path = splay-top-trees
+	url = https://github.com/Inocxh/splay-top-trees
+[submodule "stt-rs"]
+	path = stt-rs
+	url = https://github.com/Inocxh/stt-rs
