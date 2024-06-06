@@ -1,3 +1,5 @@
+.vscode
+
 benchmark/dataset/
 benchmark/plots/
 benchmark/results/
