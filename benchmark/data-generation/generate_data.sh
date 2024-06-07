@@ -1,6 +1,8 @@
 
 #!bin\bash
 
+cd "$(dirname "$0")"
+
 #First generate msf data.
 echo "Generating dataset for mst"
 mkdir -p ../dataset/mst/random/
@@ -16,7 +18,7 @@ mv target/release/gen_queries ../../benchmark/data-generation/bin/gen_queries
 #Now generate the data
 echo "Generating data for connectivity"
 cd ../../benchmark/data-generation/
-mkdir -p ../dataset/con/
+mkdir -p ../dataset/connectivity/
 python3 gen_connec_data.py "con" 1
 
 #Create a folder for ogbl-data

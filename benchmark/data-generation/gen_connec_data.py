@@ -14,11 +14,11 @@ def main():
         m = 8 * n
         for set in range(sets):
             
-            f = open(f"../dataset/{test_name}/{test_name}_{n}_{set}.txt", "w")
+            f = open(f"../dataset/connectivity/{test_name}_{n}_{set}.txt", "w")
             f.write(f"{test_name} {n} {m}\n")
             f.close()
             # Must open and close file, otherwise the subprocess writes the data too fast and breaks the format :-( 
-            f = open(f"../dataset/{test_name}/{test_name}_{n}_{set}.txt", "a")
+            f = open(f"../dataset/connectivity/{test_name}_{n}_{set}.txt", "a")
             subprocess.call(["bin/gen_queries", "--seed", f"{SEED}", "-n", f"{n}" ,"-q", f"{m}"],stdout=f);
     
 
