@@ -1,5 +1,7 @@
 .vscode
 
+d-trees/bin
+
 benchmark/dataset/
 benchmark/plots/
 benchmark/results/
