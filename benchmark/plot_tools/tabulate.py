@@ -5,14 +5,14 @@ import pandas as pd
 RUNTIME = "Running time ($ms$)"
 
 def main():
-    usage = ["mst", "mst-ogbl", "connec", "all"]
+    usage = ["mst", "mst-ogbl", "connectivity", "all"]
 
     if len(sys.argv) != 2 or (sys.argv[1] not in usage):
         exit(f"Usage {sys.argv[0]} <{'|'.join(usage)}>")
     
     to_process = []
     if sys.argv[1] == "all":
-        to_process = ["mst", "mst-ogbl", "connec"]
+        to_process = ["mst", "mst-ogbl", "connectivity"]
     else:
         to_process = [sys.argv[1]]
 
