@@ -28,13 +28,20 @@ def main():
         sttrs_df = pd.read_json(f"results/{cat}/stt-rs.jsonl", lines=True)
         sttrs_df.index = [0] * len(sttrs_df)
 
-        df = pd.concat([sttrs_df, df]).reset_index(drop=True)#.drop(columns='num_queries')
+        df = pd.concat([sttrs_df, df]).reset_index(drop=True)
+        
 
         if cat == "connectivity":
             sttc_df = pd.read_json(f"results/{cat}/stt-c.jsonl", lines=True)
             sttc_df = sttc_df.rename(columns={"median": "time_ns"})
             sttc_df = pd.concat([sttc_df['name'], sttc_df['num_vertices'], sttc_df['time_ns'], sttc_df['num_edges']], axis=1)
-            df = pd.concat( [df, sttc_df])
+            df = df.drop(columns='num_queries')
+            df = pd.concat( [df, sttc_df]).reset_index(drop=True)
+
+            dtrees_df = pd.read_json(f"results/{cat}/d-trees.jsonl", lines=True)
+            dtrees_df = dtrees_df.rename(columns={"median": "time_ns"})
+            dtrees_df = pd.concat([dtrees_df['name'], dtrees_df['num_vertices'], dtrees_df['time_ns'], dtrees_df['num_edges']], axis=1)
+            df = pd.concat( [df, dtrees_df]).reset_index(drop=True)
 
 
         df = df.pivot(index='name', columns='num_vertices', values='time_ns').div(1000*1000).reset_index()

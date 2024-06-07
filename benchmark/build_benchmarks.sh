@@ -22,5 +22,13 @@ cargo build --bin bench_mst --release
 mkdir -p ../../benchmark/bin/stt-rs
 mv target/release/bench_queries_file ../../benchmark/bin/stt-rs/bench_queries_file
 mv target/release/bench_mst ../../benchmark/bin/stt-rs/bench_mst
-cd ../../benchmark/
+
+
+cd ../../d-trees
+make bin/connectivity
+mkdir -p ../benchmark/bin/d-trees
+mv bin/connectivity ../benchmark/bin/d-trees/connectivity
+
+cd ../benchmark/
+
 
