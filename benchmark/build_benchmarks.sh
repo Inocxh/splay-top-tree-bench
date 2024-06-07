@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
 #Splay top trees
 mkdir -p ../splay-top-trees/build
 cd ../splay-top-trees/build
