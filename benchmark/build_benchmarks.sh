@@ -5,10 +5,11 @@ cd "$(dirname "$0")"
 mkdir -p ../splay-top-trees/build
 cd ../splay-top-trees/build
 cmake -DCMAKE_BUILD_TYPE=Release ..
-cmake --build . --target benchmark_mst benchmark_connectivity --config Release
+cmake --build . --target benchmark_mst benchmark_connectivity benchmark_2_edge --config Release
 mkdir -p ../../benchmark/bin/splay-top-trees/
 mv benchmark_mst ../../benchmark/bin/splay-top-trees/benchmark_mst
 mv benchmark_connectivity ../../benchmark/bin/splay-top-trees/benchmark_connectivity
+mv benchmark_2_edge ../../benchmark/bin/splay-top-trees/benchmark_2_edge
 # stt-c
 cd ../../stt-c
 make
