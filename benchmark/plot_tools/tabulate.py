@@ -24,18 +24,22 @@ def main():
         df = pd.concat([splay_top_tree_df['num_vertices'],splay_top_tree_df['num_edges'], splay_top_tree_df['name'], splay_top_tree_df['time_ns']], axis=1)
         
         num_vertices = df['num_vertices'].unique()
-        # if cat == "connec":
-        #     sttc_df = pd.read_json(f"results/{cat}/stt-c.jsonl", lines=True)
-
-        #     df = pd.concat( [df, sttc_df['time_ns']], axis=1)
-        
 
         sttrs_df = pd.read_json(f"results/{cat}/stt-rs.jsonl", lines=True)
         sttrs_df.index = [0] * len(sttrs_df)
 
-        df = pd.concat([sttrs_df, df]).reset_index(drop=True)
+        df = pd.concat([sttrs_df, df]).reset_index(drop=True)#.drop(columns='num_queries')
+
+        if cat == "connectivity":
+            sttc_df = pd.read_json(f"results/{cat}/stt-c.jsonl", lines=True)
+            sttc_df = sttc_df.rename(columns={"median": "time_ns"})
+            sttc_df = pd.concat([sttc_df['name'], sttc_df['num_vertices'], sttc_df['time_ns'], sttc_df['num_edges']], axis=1)
+            df = pd.concat( [df, sttc_df])
+
+
         df = df.pivot(index='name', columns='num_vertices', values='time_ns').div(1000*1000).reset_index()
         df = df.set_axis([[""] + [RUNTIME] * len(num_vertices),["Algorithm"] + num_vertices.tolist()], axis=1)
+
         with open(f"plots/table_{cat}.tex", 'w') as tf:
             tf.write(df.to_latex(index=False, escape=False, float_format="%.2f"))
         

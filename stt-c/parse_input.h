@@ -55,7 +55,7 @@ bool bench_queries( size_t num_vertices, const std::vector<Query>& queries, size
 				return false;
 			}
 		}
-		auto duration = std::chrono::duration_cast<std::chrono::microseconds>( std::chrono::high_resolution_clock::now() - start );
+		auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>( std::chrono::high_resolution_clock::now() - start );
 		warmup_times.push_back(duration.count());
 	}
 	
@@ -82,12 +82,12 @@ bool bench_queries( size_t num_vertices, const std::vector<Query>& queries, size
 			}
 		}
 	
-		auto duration = std::chrono::duration_cast<std::chrono::microseconds>( std::chrono::high_resolution_clock::now() - start );
+		auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>( std::chrono::high_resolution_clock::now() - start );
 		times.push_back(duration.count());
 	}
 	std::vector<double> median = times;
 	std::sort(median.begin(), median.end());
-	std::cout << "{ \"num_vertices\":" << num_vertices << ",\"num_edges\":" << queries.size() << ",\"name\":\"stt-c con\",\"median\":" << median[median.size() / 2] << ",\"warmup_times\":[";
+	std::cout << "{ \"num_vertices\":" << num_vertices << ",\"num_edges\":" << queries.size() << ",\"name\":\"stt-c\",\"median\":" << median[median.size() / 2] << ",\"warmup_times\":[";
 	std::cout << std::accumulate(std::next(warmup_times.begin()), warmup_times.end(), std::to_string(warmup_times[0]), [](std::string a, double b) {
 		return a + ',' + std::to_string(b);
 	});

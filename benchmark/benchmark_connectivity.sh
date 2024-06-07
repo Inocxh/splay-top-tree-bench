@@ -28,5 +28,5 @@ rm -f results/connectivity/stt-rs.jsonl
 for n in 500 1000 2000 3000 4000 5000 6000 7000 8000
 do
     echo "Benchmark stt-rs trees with $n vertices"...
-    bin/stt-rs/bench_queries_file --input-file dataset/connectivity/con_${n}_0.txt --iterations $ITERATIONS >> results/connectivity/stt-rs.c || exit
+    bin/stt-rs/bench_queries_file --input-file dataset/connectivity/con_${n}_0.txt --iterations $ITERATIONS --json >> results/connectivity/stt-rs.jsonl || exit
 done
