@@ -23,4 +23,4 @@ python3 gen_connec_data.py "con" 1
 
 #Create a folder for ogbl-data
 mkdir -p ../dataset/mst/ogbl-collab/
-echo "Remember to download the ogbl-collab data and process it as described in stt-rs/dataf/ogbl-collab!"
+echo "Remember to download the ogbl-collab data and process it as described in stt-rs/data/ogbl-collab!"
