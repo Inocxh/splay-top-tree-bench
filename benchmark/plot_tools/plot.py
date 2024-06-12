@@ -4,14 +4,14 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    usage = ["mst", "mst-ogbl", "connectivity", "all"]
+    usage = ["mst", "mst-ogbl", "connectivity/mix","connectivity/queries","connectivity/updates", "all"]
 
     if len(sys.argv) != 2 or (sys.argv[1] not in usage):
         exit(f"Usage {sys.argv[0]} <{'|'.join(usage)}>")
     
     to_process = []
     if sys.argv[1] == "all":
-        to_process = ["mst", "mst-ogbl", "connectivity"]
+        to_process = ["mst", "mst-ogbl", "connectivity/mix", "connectivity/queries", " connectivity/updates"]
     else:
         to_process = [sys.argv[1]]
 

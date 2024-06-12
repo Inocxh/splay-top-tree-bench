@@ -19,7 +19,9 @@ mv target/release/gen_queries ../../benchmark/data-generation/bin/gen_queries
 #Now generate the connectivity data
 echo "Generating data for connectivity"
 cd ../../benchmark/data-generation/
-mkdir -p ../dataset/connectivity/
+mkdir -p ../dataset/connectivity/mix/
+mkdir -p ../dataset/connectivity/query_only/
+mkdir -p ../dataset/connectivity/update_only/
 python3 gen_connec_data.py "con" 1
 
 #Generate the 2-edge connectivity data

@@ -6,4 +6,6 @@ bash build_benchmarks.sh
 bash benchmark_connectivity.sh
 bash benchmark_mst_ogbl.sh
 bash benchmark_mst.sh
+bash benchmark_connectivity_queries.sh
+bash benchmark_connectivity_updates.sh
 

@@ -3,7 +3,7 @@ Benchmarking scripts and datageneration tools for SplayTopTrees
 
 
 ## Compile, build and benchmark
-Requires cmake, make, rust, g++.
+Requires cmake, make, rust and gcc.
 ```
 cd benchmark
 ./build_benchmarks.sh
