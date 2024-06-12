@@ -4,7 +4,7 @@ import pandas as pd
 RUNTIME = "Running time ($ms$)"
 
 def main():
-    usage = ["mst", "mst-ogbl", "connectivity", "all"]
+    usage = ["mst", "mst-ogbl", "connectivity/mix", "connectivity/queries", " connectivity/updates"]
 
     if len(sys.argv) != 2 or (sys.argv[1] not in usage):
         exit(f"Usage {sys.argv[0]} <{'|'.join(usage)}>")
@@ -30,7 +30,7 @@ def main():
         df = pd.concat([sttrs_df, df]).reset_index(drop=True)
         
 
-        if cat == "connectivity":
+        if cat.find("connectivity") != -1:
             sttc_df = pd.read_json(f"results/{cat}/stt-c.jsonl", lines=True)
             sttc_df = sttc_df.rename(columns={"median": "time_ns"})
             sttc_df = pd.concat([sttc_df['name'], sttc_df['num_vertices'], sttc_df['time_ns'], sttc_df['num_edges']], axis=1)
@@ -46,6 +46,7 @@ def main():
         df = df.pivot(index='name', columns='num_vertices', values='time_ns').div(1000*1000).reset_index()
         df = df.set_axis([[""] + [RUNTIME] * len(num_vertices),["Algorithm"] + num_vertices.tolist()], axis=1)
 
+        cat = cat.replace("/" ,"-")
         with open(f"plots/table_{cat}.tex", 'w') as tf:
             tf.write(df.to_latex(index=False, escape=False, float_format="%.2f"))
         
