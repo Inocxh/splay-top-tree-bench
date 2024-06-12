@@ -30,7 +30,7 @@ def main():
         df = pd.concat([sttrs_df, df]).reset_index(drop=True)
         
 
-        if cat == "connectivity":
+        if cat.find("connectivity") != -1:
             sttc_df = pd.read_json(f"results/{cat}/stt-c.jsonl", lines=True)
             sttc_df = sttc_df.rename(columns={"median": "time_ns"})
             sttc_df = pd.concat([sttc_df['name'], sttc_df['num_vertices'], sttc_df['time_ns'], sttc_df['num_edges']], axis=1)
