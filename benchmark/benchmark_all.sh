@@ -8,4 +8,6 @@ bash benchmark_mst_ogbl.sh
 bash benchmark_mst.sh
 bash benchmark_connectivity_queries.sh
 bash benchmark_connectivity_updates.sh
+bash benchmark_connectivity_zipf.sh
+bash benchmark_connectivity_zipf_query.sh
 
