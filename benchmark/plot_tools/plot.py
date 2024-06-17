@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    usage = ["mst", "mst-ogbl", "connectivity/mix","connectivity/query_only","connectivity/updates_only", "2-edge-connectivity","all"]
+    usage = ["mst", "mst-ogbl", "connectivity/mix","connectivity/query_only","connectivity/updates_only","connectivity/zipf","connectivity/zipf_query", "2-edge-connectivity","all"]
 
     if len(sys.argv) != 2 or (sys.argv[1] not in usage):
         exit(f"Usage {sys.argv[0]} <{'|'.join(usage)}>")
