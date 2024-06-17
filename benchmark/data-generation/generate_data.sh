@@ -3,10 +3,10 @@
 
 cd "$(dirname "$0")"
 
-# #First generate msf data.
-# echo "Generating dataset for mst"
-# mkdir -p ../dataset/mst/random/
-# python3 gen_MSF_random.py "mst" 1
+#First generate msf data.
+echo "Generating dataset for mst"
+mkdir -p ../dataset/mst/random/
+python3 gen_MSF_random.py "mst" 1
 
 #Then build generator for connec data
 echo "Building generator connectivity dataset"
