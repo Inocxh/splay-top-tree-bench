@@ -9,9 +9,10 @@ def main():
     SEED = 1234
     test_name = sys.argv[1]
     sets = int(sys.argv[2])
-    sizes = [1000, 2000, 5000, 10000, 20000, 50000 , 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000,1500000,2000000]
+    sizes = [1000, 2000, 5000, 10000, 20000, 50000 , 100000, 200000, 500000, 1000000]#, 2000000, 5000000, 10000000,1500000,2000000]
     #generate mixed workload
     for n in sizes:
+        print(n)
         m = 8 * n
         for set in range(sets):
             f = open(f"../dataset/connectivity/mix/{test_name}_{n}_{set}.txt", "w")

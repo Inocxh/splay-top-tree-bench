@@ -29,16 +29,13 @@ public:
     // creates a forest with node ids 0..size-1
     void Initialize(size_t size);
     // as in [ST85]
-    Cost FindCost(NodeId v) { return C::Value(&node_[v]); }
     NodeId FindRoot(NodeId v) { return Root(&node_[v]) - node_; }
-    NodeId FindMin(NodeId v);
-    void AddCost(NodeId v, Cost x) { C::AddToAnc(&node_[v], x); }
     void Link(NodeId v, NodeId w) { dtree::Link(&node_[v], &node_[w]); }
     void Cut(NodeId v) { dtree::Cut(&node_[v]); }
     void Evert(NodeId v) { E::Evert(&node_[v]); }
 
-private:
     Node *node_;
+private:
     // disallows the copy constructor and the assignment operator
     Forest(const Forest &);
     void operator=(const Forest &);
@@ -105,7 +102,7 @@ struct Connectivity {
     }
 
     bool connected(int u, int v) {
-        return f.FindRoot(u) == f.FindRoot(v);
+        return dtree::SameTree(&f.node_[u], &f.node_[v]);
     }
 };
 
