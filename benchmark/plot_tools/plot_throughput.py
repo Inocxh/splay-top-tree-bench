@@ -24,7 +24,8 @@ def main():
     splay_top_tree_df = splay_top_tree_df.rename(columns={"median": "time_ns", "num_edges": "num_queries"})
     splay_top_tree_df = pd.concat([splay_top_tree_df['name'], splay_top_tree_df['num_vertices'], splay_top_tree_df['num_queries'], splay_top_tree_df['time_ns'], ], axis=1)
     splay_top_tree_df = splay_top_tree_df[(splay_top_tree_df['name'] == f"Splay top tree {sys.argv[2]} splay")]
-    splay_top_tree_df['throughput'] = splay_top_tree_df[['num_queries']].div(splay_top_tree_df['time_ns'], axis= 0)
+    splay_top_tree_df['throughput'] = splay_top_tree_df[['num_queries']].div(splay_top_tree_df['time_ns'], axis= 0).mul(10**9)
+    
     splay_top_tree_df = splay_top_tree_df.reset_index(drop=True)
     
     df = splay_top_tree_df
@@ -37,23 +38,18 @@ def main():
 
         for ds in impl_df["name"].unique():
             filt_df = impl_df[(impl_df['name'] == ds)].reset_index(drop=True)
-            print(filt_df)
-            filt_df['throughput'] = filt_df[['num_queries']].div(filt_df['time_ns'], axis= 0)
-            print(filt_df)
-            
+            filt_df['throughput'] = filt_df[['num_queries']].div(filt_df['time_ns'], axis= 0).mul(10**9)
             df = pd.concat( [df, filt_df]).reset_index(drop=True)
             
         
-    print(df)
-    #print(df[['time_ns']].div(splay_top_tree_df['time_ns'], axis= 0))
-    #print(df)
-    #print(df[impls].div(splay_top_tree_df['time_ns']), axis=0)
     
-
-    df = df.pivot(index='num_vertices', columns='name', values='throughput').div(1000*1000).reset_index()
+    df = df.pivot(index='num_vertices', columns='name', values='throughput').reset_index()
+    print(df)
     df = df.set_index('num_vertices')
-    df.plot.line(loglog=False, xlabel="Vertices", ylabel="Throughput [ops / ns]")
+    df = df.drop([1000, 2000, 5000, 10000, 20000, 50000, 100000])
+    df.plot.line(loglog=False, xlabel="Vertices", ylabel="Throughput [ops / s]")
     plt.show()
+    #plt.savefig(f"plots/plot_throughput.pdf", dpi=300)
 
 if __name__ == "__main__":
     main()
