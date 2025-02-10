@@ -25,8 +25,7 @@ mkdir -p ../dataset/connectivity/zipf/
 mkdir -p ../dataset/connectivity/zipf-query/
 python3 gen_connec_data.py "con" 1
 
-#Generate the 2-edge connect
-ivity data
+#Generate the 2-edge connectivity data
 echo "Generating data for 2-edge connectivity"
 mkdir -p ../dataset/2-edge-connectivity/
 python3 gen_2_edge_data.py "2edge" 1
