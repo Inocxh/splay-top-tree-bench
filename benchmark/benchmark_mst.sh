@@ -20,4 +20,3 @@ do
     echo "Benchmark stt-rs MST with $n vertices"...
     ./bin/stt-rs/bench_mst -i dataset/mst/random/mst_${n}_0.txt --json --iterations $ITERATIONS >> results/mst/stt-rs.jsonl || exit
 done
-
