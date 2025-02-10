@@ -2,7 +2,7 @@
 Benchmarking scripts and datageneration tools for SplayTopTrees 
 
 ## Requirements
-The has been run with the following software.
+The following software is required to run this software:
 -   cmake version 3.31.5
 -   rustc 1.84.1
 -   cargo 1.84.1
